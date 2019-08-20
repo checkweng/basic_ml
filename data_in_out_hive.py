@@ -46,4 +46,6 @@ data_file2 = '/data/datacenter/tongxin_hive/timeseries/test.csv'
 sql1 = "select %s from %s where dt='%s' limit 10" %(columns, table, date)
 hive_command2 = ('''hive -e "%s" >> %s''' % (sql1, data_file2))
 os.system(hive_command2)
-
+hive_command = (
+	'''hive -e "LOAD DATA LOCAL INPATH '%s' OVERWRITE INTO TABLE gamelive.dm_huya_yyuid_age_predict PARTITION(dt='%s');"''' % (
+result_file, date))	
