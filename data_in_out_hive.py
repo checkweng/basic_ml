@@ -9,6 +9,29 @@ test_file.write(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))+'
 
 test_file.close()
 
+filePath = 'd:/test_hello_world.csv'
+
+
+if os.path.exists(filePath):
+	os.remove(filePath)
+
+
+file = open(filePath,'w')
+
+
+for i in range(5):
+	file.write(str(i))
+
+file.close()
+
+##等效
+with open(filePath,'w') as f:
+	for i in range(5):
+		f.write(str(i))
+
+
+
+
 
 '''读取hive数据'''
 
