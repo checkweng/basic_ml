@@ -37,3 +37,16 @@ def get_data_from_cache(dump_path):
     act_data = act_cate8_data[["user_id", "sku_id", "type", "time"]]
     act_data = act_data[act_data["type"] == 4]
     return act_data
+
+#hdf_ h5读取
+df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]},
+                  index=['a', 'b', 'c'])
+df.to_hdf('data.h5', key='df', mode='w')
+
+s = pd.Series([1, 2, 3, 4])
+s.to_hdf('data.h5', key='s')
+
+pd.read_hdf('data.h5', 'df')
+pd.read_hdf('data.h5', 's')
+import os
+os.remove('data.h5')
